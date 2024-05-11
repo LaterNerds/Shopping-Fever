@@ -28,8 +28,9 @@ func _process(delta):
 		wander_timer = wander_interval
 	
 	velocity = move_speed * wander_direction
-	move_and_slide()
 	$Sprite2D.position = position
+	move_and_slide()
+	
 
 	# Play animation based on direction
 	if velocity.length_squared() > 0:
