@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var is_lysol_active = false
+
 #player stuf
 var health = 100
 
@@ -17,6 +19,7 @@ var in_covid = false
 var elapsed_time = 0
 
 @onready var texture_rect = $"../Shader/TextureRect"
+const LYSOL = preload("res://scenes/lysol.tscn")
 
 func movement_stuff(delta):
 	var input_vector = Vector2()
@@ -70,6 +73,15 @@ func _process(delta):
 		print("died")
 		queue_free()
 	
+	
+	#keypressses
+	if Input.is_action_just_pressed("use"):
+		if not is_lysol_active:
+			var instance = LYSOL.instantiate()
+			add_child(instance)
+			is_lysol_active = true
+
+	
 	texture_rect.material.set_shader_parameter("vignette_opacity", 5 - (health / 20))
 
 # on player area entered
@@ -81,3 +93,7 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_area_exited(area):
 	in_covid = false
 	elapsed_time = 0
+
+func _on_child_exiting_tree(node):
+	if node is Area2D:
+		is_lysol_active = false

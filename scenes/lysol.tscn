@@ -7,7 +7,7 @@
 radius = 104.019
 
 [node name="Lysol" type="Area2D"]
-scale = Vector2(-3.21075, -3.21075)
+scale = Vector2(-1.25075, -1.25075)
 script = ExtResource("1_cycdf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,4 +19,8 @@ texture = ExtResource("1_lfqrj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h1bka")
 
+[node name="Active" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Active" to="." method="_on_active_timeout"]
