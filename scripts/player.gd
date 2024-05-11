@@ -70,7 +70,7 @@ func _process(delta):
 		print("died")
 		queue_free()
 	
-	texture_rect.material.set_shader_param("vignette_opacity", health - 99)
+	texture_rect.material.set_shader_parameter("vignette_opacity", 5 - (health / 20))
 
 # on player area entered
 func _on_area_2d_area_entered(area):
