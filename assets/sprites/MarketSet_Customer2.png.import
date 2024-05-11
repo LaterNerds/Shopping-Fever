@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2uuj8ve1uisd"
-path="res://.godot/imported/covid.png-c429b8fb79323a98186a8ed3bf4e5aa0.ctex"
+uid="uid://dndar8o588ah5"
+path="res://.godot/imported/MarketSet_Customer2.png-dbeac31331b46ca9cb60a1956be278dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://covid.png"
-dest_files=["res://.godot/imported/covid.png-c429b8fb79323a98186a8ed3bf4e5aa0.ctex"]
+source_file="res://assets/sprites/MarketSet_Customer2.png"
+dest_files=["res://.godot/imported/MarketSet_Customer2.png-dbeac31331b46ca9cb60a1956be278dc.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6him0ko0ctas"]
 
-[ext_resource type="Script" path="res://paper.gd" id="1_c5h5p"]
-[ext_resource type="Texture2D" uid="uid://wwocqw7g0a2g" path="res://pixel-art-style-18-bit-toilet-paper-vector_682225-83.png" id="1_fbon7"]
+[ext_resource type="Script" path="res://scripts/paper.gd" id="1_c5h5p"]
+[ext_resource type="Texture2D" uid="uid://wwocqw7g0a2g" path="res://assets/sprites/pixel-art-style-18-bit-toilet-paper-vector_682225-83.png" id="1_fbon7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34njs"]
 size = Vector2(385.714, 428.571)

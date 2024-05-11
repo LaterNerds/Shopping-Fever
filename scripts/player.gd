@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+#player stuf
+var health = 100
+
 # Car properties
 var speed = 0
 var acceleration = 500
@@ -11,8 +14,7 @@ var drift_factor = 1
 var friction = 400
 var reverse_friction = 100
 
-# Process inputs and update car movement
-func _process(delta):
+func movement_stuff(delta):
 	var input_vector = Vector2()
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
@@ -49,3 +51,20 @@ func _process(delta):
 		$Sprite2D.flip_v = true
 	else:
 		$Sprite2D.flip_v = false
+
+# Process inputs and update car movement
+func _process(delta):
+	#drift stuff
+	movement_stuff(delta)
+	
+	if (health <= 0):
+		print("died")
+		queue_free()
+	
+
+# on player area entered
+func _on_area_2d_area_entered(area):
+	#if covid kil
+	if area.is_in_group("covid"):
+		health = 0
+

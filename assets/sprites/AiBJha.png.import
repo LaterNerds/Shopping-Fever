@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wwocqw7g0a2g"
-path="res://.godot/imported/pixel-art-style-18-bit-toilet-paper-vector_682225-83.png-de9a8a4579662ecc7e0e702ae8519c5f.ctex"
+uid="uid://tdfvar64rf7n"
+path="res://.godot/imported/AiBJha.png-0ff51754ea4110956e11dc015f12f586.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pixel-art-style-18-bit-toilet-paper-vector_682225-83.png"
-dest_files=["res://.godot/imported/pixel-art-style-18-bit-toilet-paper-vector_682225-83.png-de9a8a4579662ecc7e0e702ae8519c5f.ctex"]
+source_file="res://assets/sprites/AiBJha.png"
+dest_files=["res://.godot/imported/AiBJha.png-0ff51754ea4110956e11dc015f12f586.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dndar8o588ah5"
-path="res://.godot/imported/MarketSet_Customer2.png-18e2a03a2e0612e36551e7472e2d5a47.ctex"
+uid="uid://wwocqw7g0a2g"
+path="res://.godot/imported/pixel-art-style-18-bit-toilet-paper-vector_682225-83.png-5045f176d4ad5ada4bcaafc7b48cf6b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MarketSet_Customer2.png"
-dest_files=["res://.godot/imported/MarketSet_Customer2.png-18e2a03a2e0612e36551e7472e2d5a47.ctex"]
+source_file="res://assets/sprites/pixel-art-style-18-bit-toilet-paper-vector_682225-83.png"
+dest_files=["res://.godot/imported/pixel-art-style-18-bit-toilet-paper-vector_682225-83.png-5045f176d4ad5ada4bcaafc7b48cf6b3.ctex"]
 
 [params]
 
