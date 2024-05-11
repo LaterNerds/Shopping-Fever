@@ -12,7 +12,7 @@ var collision_detected = false
 
 func _ready():
 	var spritesheet = randi_range(1, 4)
-	$Sprite2D.texture = load("res://MarketSet_Customer" + str(spritesheet) + ".png")
+	$Sprite2D.texture = load("res://assets/sprites/MarketSet_Customer" + str(spritesheet) + ".png")
 	
 	# Start wandering immediately
 	update_wander_direction()
@@ -29,20 +29,21 @@ func _process(delta):
 	
 	velocity = move_speed * wander_direction
 	move_and_slide()
+	$Sprite2D.position = position
 
 	# Play animation based on direction
 	if velocity.length_squared() > 0:
 		var angle = velocity.angle()
 		if abs(angle) < deg_to_rad(45) or abs(angle) > deg_to_rad(135):
 			if angle > 0:
-				animation_player.play("walk_right")
-			else:
 				animation_player.play("walk_left")
+			else:
+				animation_player.play("walk_right")
 		else:
 			if angle > 0:
-				animation_player.play("walk_down")
-			else:
 				animation_player.play("walk_up")
+			else:
+				animation_player.play("walk_down")
 	else:
 		animation_player.stop()
 

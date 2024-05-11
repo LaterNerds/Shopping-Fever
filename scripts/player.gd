@@ -13,6 +13,8 @@ var max_steering_angle = 40
 var drift_factor = 1
 var friction = 400
 var reverse_friction = 100
+var in_covid = false
+var elapsed_time = 0
 
 func movement_stuff(delta):
 	var input_vector = Vector2()
@@ -56,15 +58,22 @@ func movement_stuff(delta):
 func _process(delta):
 	#drift stuff
 	movement_stuff(delta)
-	
+	if in_covid == true:
+		elapsed_time += delta
+	if elapsed_time >= 0.8:
+		health -= 10
+		elapsed_time = 0
+		get_node("../gui/health").text = "Health: " + str(health)
 	if (health <= 0):
 		print("died")
 		queue_free()
-	
 
 # on player area entered
 func _on_area_2d_area_entered(area):
 	#if covid kil
 	if area.is_in_group("covid"):
-		health = 0
+		in_covid = true
 
+func _on_area_2d_area_exited(area):
+	in_covid = false
+	elapsed_time = 0

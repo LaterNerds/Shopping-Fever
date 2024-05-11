@@ -26,5 +26,7 @@ shape = SubResource("RectangleShape2D_aiv5i")
 position = Vector2(-8.5, -4.5)
 shape = SubResource("RectangleShape2D_aiv5i")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
