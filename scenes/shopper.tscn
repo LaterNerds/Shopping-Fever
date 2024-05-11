@@ -78,7 +78,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uysqt"]
 size = Vector2(51, 114)
 
-[node name="shopper" type="CharacterBody2D"]
+[node name="shopper" type="CharacterBody2D" groups=["shopper"]]
 script = ExtResource("1_pek7n")
 
 [node name="Area2D" type="Area2D" parent="." groups=["covid"]]
