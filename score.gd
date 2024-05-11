@@ -2,13 +2,16 @@ extends Label
 
 var score = 0
 
+@onready var score_label = $"."
+@onready var timer = $Timer
+
+var pos
+func _ready():
+	timer.start()
+
 func _process(delta):
-	score += delta
-	set_text(str(round_to_dec(score, 3) * 1000))
-	position = Vector2(get_node("../player").position.x - 550, get_node("../player").position.y - 300)
+	score_label.text = "Score: " + str(score)
 
-func round_to_dec(num, digit):
-	return round(num * pow(10.0, digit)) / pow(10.0, digit)
-
-func add_score(amount):
-	score += amount / 1000
+func _on_timer_timeout():
+	score += 1
+	timer.start()
