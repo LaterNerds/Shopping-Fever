@@ -16,6 +16,8 @@ var reverse_friction = 100
 var in_covid = false
 var elapsed_time = 0
 
+@onready var texture_rect = $"../Shader/TextureRect"
+
 func movement_stuff(delta):
 	var input_vector = Vector2()
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -67,6 +69,8 @@ func _process(delta):
 	if (health <= 0):
 		print("died")
 		queue_free()
+	
+	texture_rect.material.set_shader_param("vignette_opacity", health - 99)
 
 # on player area entered
 func _on_area_2d_area_entered(area):

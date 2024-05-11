@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7l44jw8sgxaj"]
+[gd_scene load_steps=15 format=3 uid="uid://c7l44jw8sgxaj"]
 
 [ext_resource type="PackedScene" uid="uid://d1q3cybc6221n" path="res://scenes/player.tscn" id="1_fmhl6"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="3_u5hn7"]
 [ext_resource type="PackedScene" uid="uid://cnndmgf55niro" path="res://scenes/shopper.tscn" id="4_8uk24"]
 [ext_resource type="Texture2D" uid="uid://bjgx1udo5e1y4" path="res://assets/sprites/MarketSet_Tileset.png" id="4_m08uq"]
+[ext_resource type="Shader" path="res://shaders/gotCovid.gdshader" id="5_h5cyt"]
+[ext_resource type="Texture2D" uid="uid://bwfib3ss6bxjm" path="res://kmnas.png" id="6_ur65v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lilmi"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -467,7 +469,13 @@ size = Vector2(46, 2843)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mwjv"]
 size = Vector2(3268.5, 25)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b242c"]
+shader = ExtResource("5_h5cyt")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.0
+shader_parameter/vignette_rgb = Vector4(0, 155, 0, 1)
+
+[node name="Game" type="Node2D"]
 
 [node name="ground" type="TileMap" parent="."]
 z_index = -10
@@ -545,5 +553,13 @@ shape = SubResource("RectangleShape2D_7mwjv")
 
 [node name="shopper" parent="." instance=ExtResource("4_8uk24")]
 position = Vector2(-60, -60)
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Shader"]
+material = SubResource("ShaderMaterial_b242c")
+offset_right = 1159.0
+offset_bottom = 655.0
+texture = ExtResource("6_ur65v")
 
 [connection signal="timeout" from="gui/score/Timer" to="gui/score" method="_on_timer_timeout"]
