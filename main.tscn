@@ -1,9 +1,102 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7l44jw8sgxaj"]
+[gd_scene load_steps=7 format=3 uid="uid://c7l44jw8sgxaj"]
 
 [ext_resource type="PackedScene" uid="uid://d1q3cybc6221n" path="res://player.tscn" id="1_fmhl6"]
+[ext_resource type="PackedScene" uid="uid://c6him0ko0ctas" path="res://paper.tscn" id="2_o2xui"]
+[ext_resource type="Script" path="res://score.gd" id="3_u5hn7"]
+[ext_resource type="Texture2D" uid="uid://bjgx1udo5e1y4" path="res://MarketSet_Tileset.png" id="4_m08uq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pf8oo"]
+texture = ExtResource("4_m08uq")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qqa3a"]
+sources/0 = SubResource("TileSetAtlasSource_pf8oo")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_fmhl6")]
+[node name="player" parent="." instance=ExtResource("1_fmhl6")]
 texture_filter = 1
 position = Vector2(250, 182)
+
+[node name="paper" parent="." instance=ExtResource("2_o2xui")]
+
+[node name="score" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_u5hn7")
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_qqa3a")
+format = 2
+layer_0/tile_data = PackedInt32Array(262161, 262144, 2, 65542, 196608, 2, 131078, 196608, 3, 65543, 262144, 2, 131079, 262144, 3, 65544, 327680, 2, 131080, 327680, 3)

@@ -4,14 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://tdfvar64rf7n" path="res://AiBJha.png" id="2_4p58o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aiv5i"]
+size = Vector2(41, 49)
 
 [node name="player" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_nadho")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_4p58o")
 hframes = 3
 vframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8.5, -4.5)
 shape = SubResource("RectangleShape2D_aiv5i")
