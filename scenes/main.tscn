@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c7l44jw8sgxaj"]
+[gd_scene load_steps=24 format=3 uid="uid://c7l44jw8sgxaj"]
 
 [ext_resource type="PackedScene" uid="uid://d1q3cybc6221n" path="res://scenes/player.tscn" id="1_fmhl6"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="3_u5hn7"]
@@ -6,6 +6,8 @@
 [ext_resource type="Shader" path="res://shaders/gotCovid.gdshader" id="5_h5cyt"]
 [ext_resource type="Script" path="res://scripts/spawn_shopper.gd" id="6_mf0vi"]
 [ext_resource type="Texture2D" uid="uid://bwfib3ss6bxjm" path="res://kmnas.png" id="6_ur65v"]
+[ext_resource type="Shader" path="res://scenes/vhs.gdshader" id="6_wqkm6"]
+[ext_resource type="Shader" path="res://scenes/monitor.gdshader" id="7_g1yoa"]
 [ext_resource type="Script" path="res://scripts/toilet_paper_spawn.gd" id="7_ivanx"]
 [ext_resource type="Script" path="res://scripts/lysol_spawn.gd" id="8_ofort"]
 [ext_resource type="Script" path="res://scripts/mask_spawn.gd" id="9_qbujp"]
@@ -554,6 +556,46 @@ shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.0
 shader_parameter/vignette_rgb = Vector4(0, 155, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yjtr7"]
+shader = ExtResource("6_wqkm6")
+shader_parameter/vhs_resolution = Vector2(1152, 648)
+shader_parameter/samples = 12
+shader_parameter/crease_noise = 2.0
+shader_parameter/crease_opacity = 1.0
+shader_parameter/filter_intensity = 1.0
+shader_parameter/tape_crease_smear = 2.0
+shader_parameter/tape_crease_intensity = 1.0
+shader_parameter/tape_crease_jitter = 1.0
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 2.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tkml5"]
+shader = ExtResource("7_g1yoa")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(640, 420)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.145
+shader_parameter/roll_size = 9.382
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 0.63
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.115
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
 [node name="Game" type="Node2D"]
 
 [node name="ground" type="TileMap" parent="."]
@@ -660,6 +702,17 @@ offset_top = 2.0
 offset_right = 1152.0
 offset_bottom = 649.0
 texture = ExtResource("6_ur65v")
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_yjtr7")
+offset_left = -1.0
+offset_right = 1150.0
+offset_bottom = 648.0
+
+[node name="ColorRect2" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_tkml5")
+offset_right = 1151.0
+offset_bottom = 647.0
 
 [node name="shoppers_spawn" type="Node" parent="."]
 
