@@ -1,7 +1,5 @@
 extends Label
 
-var score = 0
-
 @onready var score_label = $"."
 @onready var timer = $Timer
 
@@ -10,11 +8,8 @@ func _ready():
 	timer.start()
 
 func _process(delta):
-	score_label.text = "Score: " + str(score)
+	score_label.text = "Score: " + str(GlobalVars.score)
 
 func _on_timer_timeout():
-	score += 1
+	GlobalVars.score += 1
 	timer.start()
-
-func _add_score(amount):
-	score += amount

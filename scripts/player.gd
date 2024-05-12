@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var is_lysol_active = false
-var has_lysol = false
 
 @onready var has_lysol_label = $"../gui/has_lysol_label"
 
@@ -62,35 +61,32 @@ func movement_stuff(delta):
 	else:
 		$Sprite2D.flip_v = false
 
-func _ready():
-	set_meta("has_lysol", false)
-
 # Process inputs and update car movement
 func _process(delta):
-	has_lysol = get_meta("has_lysol")
-	if has_lysol:
+	if GlobalVars.has_lysol:
 		has_lysol_label.text = "Lysol: Yes"
 	else:
 		has_lysol_label.text = "Lysol: No"
 	
 	#drift stuff
 	movement_stuff(delta)
-	if in_covid == true:
-		elapsed_time += delta
-	if elapsed_time >= 0.8:
-		health -= 10
-		elapsed_time = 0
-		get_node("../gui/health").text = "Health: " + str(health)
-	if (health <= 0):
-		print("died")
-		queue_free()
+	if GlobalVars.mask_protection == 0:
+		if GlobalVars.in_covid == true:
+			elapsed_time += delta
+		if elapsed_time >= 0.8:
+			health -= 10
+			elapsed_time = 0
+			get_node("../gui/health").text = "Health: " + str(health)
+		if (health <= 0):
+			print("died")
+			queue_free()
 	
 	
 	#keypressses
 	if Input.is_action_just_pressed("use"):
-		print(has_lysol)
+		print(GlobalVars.has_lysol)
 		print(is_lysol_active)
-		if not is_lysol_active and has_lysol:
+		if not is_lysol_active and GlobalVars.has_lysol:
 			var instance = LYSOL.instantiate()
 			add_child(instance)
 			is_lysol_active = true
@@ -102,10 +98,10 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	#if covid kil
 	if area.is_in_group("covid"):
-		in_covid = true
+		GlobalVars.in_covid = true
 
 func _on_area_2d_area_exited(area):
-	in_covid = false
+	GlobalVars.in_covid = false
 	elapsed_time = 0
 
 func _on_child_exiting_tree(node):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c7l44jw8sgxaj"]
+[gd_scene load_steps=19 format=3 uid="uid://c7l44jw8sgxaj"]
 
 [ext_resource type="PackedScene" uid="uid://d1q3cybc6221n" path="res://scenes/player.tscn" id="1_fmhl6"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="3_u5hn7"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bwfib3ss6bxjm" path="res://kmnas.png" id="6_ur65v"]
 [ext_resource type="Script" path="res://scripts/toilet_paper_spawn.gd" id="7_ivanx"]
 [ext_resource type="Script" path="res://scripts/lysol_spawn.gd" id="8_ofort"]
-[ext_resource type="Script" path="res://scripts/mask_spawn.gd" id="9_qbujp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oay6h"]
 texture = ExtResource("4_m08uq")
@@ -626,7 +625,7 @@ offset_top = 559.0
 offset_right = 150.0
 offset_bottom = 582.0
 
-[node name="player" parent="." groups=["player"] instance=ExtResource("1_fmhl6")]
+[node name="player" parent="." instance=ExtResource("1_fmhl6")]
 z_index = 5
 texture_filter = 1
 position = Vector2(134, 419)
@@ -686,6 +685,5 @@ script = ExtResource("8_ofort")
 script = ExtResource("7_ivanx")
 
 [node name="mask_spawn" type="Node" parent="."]
-script = ExtResource("9_qbujp")
 
 [connection signal="timeout" from="gui/score/Timer" to="gui/score" method="_on_timer_timeout"]

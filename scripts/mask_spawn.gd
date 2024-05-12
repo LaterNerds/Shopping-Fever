@@ -1,5 +1,6 @@
 extends Node
 
+const PLAYER = preload("res://scenes/player.tscn")
 var tilemap # Reference to your TileMap node
 var spawn_count = 0
 
@@ -10,6 +11,13 @@ func _ready():
 	# Call a function to spawn your child nodes 5 times
 	for i in range(5):
 		spawn_child()
+
+func _process(delta):
+	if GlobalVars.mask_protection > 0 && GlobalVars.in_covid:
+		GlobalVars.mask_protection -= delta
+	if GlobalVars.mask_protection < 0:
+		GlobalVars.mask_protection = 0
+	$"../gui/mask".text = "Protection: " + str(round(GlobalVars.mask_protection))
 
 func spawn_child():
 	var min_position = Vector2(-457, -1300)
@@ -22,7 +30,7 @@ func spawn_child():
 		random_position = Vector2(randi_range(min_position.x, max_position.x), randi_range(min_position.y, max_position.y))
 		obstacle_collisions = check_obstacle_collisions(random_position)
 
-	var child = load("res://scenes/lysol_card.tscn").instantiate()
+	var child = load("res://scenes/mask_card.tscn").instantiate()
 	child.position = random_position
 	add_child(child)
 
