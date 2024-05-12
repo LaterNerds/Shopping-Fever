@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://h4i63a8ckshk"]
+
+[ext_resource type="Script" path="res://scripts/lysol_card.gd" id="1_26fbn"]
+[ext_resource type="Texture2D" uid="uid://bx8fw5vu3xfii" path="res://assets/sprites/lysol_card.png" id="1_wi25y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p83tc"]
+size = Vector2(31, 38)
+
+[node name="Lysol_card" type="Area2D"]
+script = ExtResource("1_26fbn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(265.25, 214.681)
+scale = Vector2(0.131667, 0.126747)
+texture = ExtResource("1_wi25y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(265.5, 215)
+shape = SubResource("RectangleShape2D_p83tc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 var is_lysol_active = false
+var has_lysol = false
+
+@onready var has_lysol_label = $"../gui/has_lysol_label"
 
 #player stuf
 var health = 100
@@ -59,8 +62,17 @@ func movement_stuff(delta):
 	else:
 		$Sprite2D.flip_v = false
 
+func _ready():
+	set_meta("has_lysol", false)
+
 # Process inputs and update car movement
 func _process(delta):
+	has_lysol = get_meta("has_lysol")
+	if has_lysol:
+		has_lysol_label.text = "Lysol: Yes"
+	else:
+		has_lysol_label.text = "Lysol: No"
+	
 	#drift stuff
 	movement_stuff(delta)
 	if in_covid == true:
@@ -76,7 +88,9 @@ func _process(delta):
 	
 	#keypressses
 	if Input.is_action_just_pressed("use"):
-		if not is_lysol_active:
+		print(has_lysol)
+		print(is_lysol_active)
+		if not is_lysol_active and has_lysol:
 			var instance = LYSOL.instantiate()
 			add_child(instance)
 			is_lysol_active = true
@@ -97,3 +111,4 @@ func _on_area_2d_area_exited(area):
 func _on_child_exiting_tree(node):
 	if node is Area2D:
 		is_lysol_active = false
+		set_meta("has_lysol", false)

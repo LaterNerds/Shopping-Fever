@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7l44jw8sgxaj"]
+[gd_scene load_steps=19 format=3 uid="uid://c7l44jw8sgxaj"]
 
 [ext_resource type="PackedScene" uid="uid://d1q3cybc6221n" path="res://scenes/player.tscn" id="1_fmhl6"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="3_u5hn7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/spawn.gd" id="6_mf0vi"]
 [ext_resource type="Texture2D" uid="uid://bwfib3ss6bxjm" path="res://kmnas.png" id="6_ur65v"]
 [ext_resource type="Script" path="res://scripts/toilet_paper_spawn.gd" id="7_ivanx"]
+[ext_resource type="Script" path="res://scripts/lysol_spawn.gd" id="8_ofort"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oay6h"]
 texture = ExtResource("4_m08uq")
@@ -609,6 +610,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Health: 100"
 
+[node name="has_lysol_label" type="Label" parent="gui"]
+offset_left = 951.0
+offset_top = 520.0
+offset_right = 1144.0
+offset_bottom = 575.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Lysol: Yes"
+
 [node name="player" parent="." instance=ExtResource("1_fmhl6")]
 z_index = 5
 texture_filter = 1
@@ -636,11 +646,14 @@ position = Vector2(1025, -1413)
 shape = SubResource("RectangleShape2D_7mwjv")
 
 [node name="Shader" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Shader"]
 material = SubResource("ShaderMaterial_b242c")
-offset_right = 1159.0
-offset_bottom = 655.0
+offset_left = 48.0
+offset_top = 52.0
+offset_right = 1207.0
+offset_bottom = 707.0
 texture = ExtResource("6_ur65v")
 
 [node name="shoppers_spawn" type="Node" parent="."]
@@ -663,5 +676,8 @@ script = ExtResource("6_mf0vi")
 
 [node name="toilet_paper_spawn" type="Node" parent="."]
 script = ExtResource("7_ivanx")
+
+[node name="lysol_spawn" type="Node" parent="."]
+script = ExtResource("8_ofort")
 
 [connection signal="timeout" from="gui/score/Timer" to="gui/score" method="_on_timer_timeout"]
