@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c7l44jw8sgxaj"]
+[gd_scene load_steps=32 format=3 uid="uid://c7l44jw8sgxaj"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_5xdsv"]
 [ext_resource type="PackedScene" uid="uid://d1q3cybc6221n" path="res://scenes/player.tscn" id="1_fmhl6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/toilet_paper_spawn.gd" id="7_ivanx"]
 [ext_resource type="Script" path="res://scripts/lysol_spawn.gd" id="8_ofort"]
 [ext_resource type="Script" path="res://scripts/mask_spawn.gd" id="9_qbujp"]
+[ext_resource type="Script" path="res://scripts/grandma_spawn.gd" id="11_qg3kt"]
 [ext_resource type="Script" path="res://scripts/vaccine_spawn.gd" id="12_m2mar"]
 [ext_resource type="AudioStream" uid="uid://4425gbwnpfyq" path="res://assets/sfx/mask.mp3" id="13_27261"]
 [ext_resource type="AudioStream" uid="uid://dqapcfn6xv54l" path="res://assets/sfx/lysol.wav" id="13_g6ax7"]
@@ -749,6 +750,9 @@ script = ExtResource("6_mf0vi")
 [node name="lysol_spawn" type="Node" parent="."]
 script = ExtResource("8_ofort")
 
+[node name="grandma_spawn" type="Node" parent="."]
+script = ExtResource("11_qg3kt")
+
 [node name="toilet_paper_spawn" type="Node" parent="."]
 script = ExtResource("7_ivanx")
 
@@ -775,6 +779,6 @@ volume_db = -20.122
 
 [node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_5s8sq")
-volume_db = 24.0
+volume_db = -14.629
 
 [connection signal="timeout" from="gui/score/Timer" to="gui/score" method="_on_timer_timeout"]

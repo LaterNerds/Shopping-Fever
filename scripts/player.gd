@@ -92,6 +92,8 @@ func _process(delta):
 	if GlobalVars.player_health >= 101:
 		GlobalVars.player_health = 100
 	
+	GlobalVars.player_global_pos = global_position
+	
 	texture_rect.material.set_shader_parameter("vignette_opacity", 5 - (GlobalVars.player_health / 20))
 
 # on player area entered

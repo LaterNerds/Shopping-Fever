@@ -1,0 +1,229 @@
+[gd_scene load_steps=27 format=3 uid="uid://dqddudexqrgtn"]
+
+[ext_resource type="Texture2D" uid="uid://d2bkd63kukww7" path="res://assets/sprites/grandma.png" id="1_fmbla"]
+[ext_resource type="Script" path="res://scripts/grandma.gd" id="1_rhyau"]
+[ext_resource type="Texture2D" uid="uid://d2uuj8ve1uisd" path="res://assets/sprites/covid.png" id="3_fbd6j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vk8yd"]
+radius = 176.011
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75x52"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(0, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ricnd"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(7, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11dwv"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(14, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7iw4"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(21, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh61e"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(56, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoc6s"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(63, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrkei"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(0, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cg52"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(7, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t12x6"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(14, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2vbs"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(21, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m4xh"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(28, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1unj5"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(35, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4e5c"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(42, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np8e6"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(49, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuxst"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(56, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca0e0"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(63, 16, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqpyl"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(28, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ows1x"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(35, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csj72"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(42, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqifl"]
+atlas = ExtResource("1_fmbla")
+region = Rect2(49, 0, 7, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t810x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75x52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ricnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11dwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7iw4")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh61e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoc6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrkei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cg52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t12x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2vbs")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m4xh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1unj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4e5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np8e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuxst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca0e0")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqpyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ows1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csj72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqifl")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6w817"]
+radius = 3.0
+height = 14.0
+
+[node name="Grandma" type="CharacterBody2D" groups=["grandma"]]
+z_index = 3
+scale = Vector2(6.96475, 6.96475)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_rhyau")
+
+[node name="Area2D" type="Area2D" parent="." groups=["covid"]]
+z_index = -2
+scale = Vector2(0.0949066, 0.0949066)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vk8yd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+z_index = 2
+position = Vector2(0.50001, -1.00001)
+scale = Vector2(0.702, 0.7)
+texture = ExtResource("3_fbd6j")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Area2D"]
+z_index = 3
+amount = 18
+lifetime = 2.0
+randomness = 0.1
+emission_shape = 3
+emission_rect_extents = Vector2(20, 20)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 67.8
+initial_velocity_max = 168.46
+scale_amount_min = 4.4
+scale_amount_max = 4.4
+color = Color(0, 1, 0, 1)
+hue_variation_min = -0.76
+hue_variation_max = 0.35
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t810x")
+animation = &"walk_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6w817")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 1e+08
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

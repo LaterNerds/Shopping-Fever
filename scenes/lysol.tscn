@@ -7,7 +7,7 @@
 radius = 104.019
 
 [node name="Lysol" type="Area2D"]
-z_index = 3
+z_index = 2
 scale = Vector2(-1.25075, -1.25075)
 script = ExtResource("1_bd1k0")
 
@@ -39,5 +39,9 @@ color = Color(1, 1, 0, 1)
 hue_variation_min = -0.76
 hue_variation_max = 0.35
 
+[node name="Immune" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="Active" to="." method="_on_active_timeout"]
+[connection signal="timeout" from="Immune" to="." method="_on_immune_timeout"]
