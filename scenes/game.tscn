@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://c7l44jw8sgxaj"]
+[gd_scene load_steps=31 format=3 uid="uid://c7l44jw8sgxaj"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_5xdsv"]
 [ext_resource type="PackedScene" uid="uid://d1q3cybc6221n" path="res://scenes/player.tscn" id="1_fmhl6"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="3_u5hn7"]
 [ext_resource type="Texture2D" uid="uid://bjgx1udo5e1y4" path="res://assets/sprites/MarketSet_Tileset.png" id="4_m08uq"]
@@ -15,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://4425gbwnpfyq" path="res://assets/sfx/mask.mp3" id="13_27261"]
 [ext_resource type="AudioStream" uid="uid://dqapcfn6xv54l" path="res://assets/sfx/lysol.wav" id="13_g6ax7"]
 [ext_resource type="AudioStream" uid="uid://7r85lsghqgts" path="res://assets/sfx/syringe.mp3" id="15_w1n37"]
+[ext_resource type="AudioStream" uid="uid://bc68ounh0yso8" path="res://assets/music/main.wav" id="17_spn6h"]
+[ext_resource type="AudioStream" uid="uid://dlryksndkvj0u" path="res://assets/sfx/pickup.wav" id="18_5s8sq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oay6h"]
 texture = ExtResource("4_m08uq")
@@ -573,10 +576,10 @@ shader_parameter/noise_intensity = 0.1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkml5"]
 shader = ExtResource("7_g1yoa")
 shader_parameter/overlay = false
-shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_opacity = 0.0
 shader_parameter/scanlines_width = 0.25
 shader_parameter/grille_opacity = 0.0
-shader_parameter/resolution = Vector2(640, 420)
+shader_parameter/resolution = Vector2(1152, 648)
 shader_parameter/pixelate = true
 shader_parameter/roll = true
 shader_parameter/roll_speed = 5.145
@@ -586,13 +589,13 @@ shader_parameter/distort_intensity = 0.05
 shader_parameter/noise_opacity = 0.4
 shader_parameter/noise_speed = 5.0
 shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.03
+shader_parameter/aberration = 0.02
 shader_parameter/brightness = 0.63
 shader_parameter/discolor = true
 shader_parameter/warp_amount = 0.115
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_opacity = 0.385
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b242c"]
 shader = ExtResource("5_h5cyt")
@@ -601,6 +604,7 @@ shader_parameter/vignette_opacity = 0.0
 shader_parameter/vignette_rgb = Vector4(0, 155, 0, 1)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_5xdsv")
 
 [node name="ground" type="TileMap" parent="."]
 position = Vector2(6, 2)
@@ -764,5 +768,13 @@ stream = ExtResource("13_g6ax7")
 
 [node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_w1n37")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_spn6h")
+volume_db = -20.122
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_5s8sq")
+volume_db = -4.71
 
 [connection signal="timeout" from="gui/score/Timer" to="gui/score" method="_on_timer_timeout"]

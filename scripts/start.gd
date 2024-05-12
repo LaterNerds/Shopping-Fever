@@ -17,5 +17,6 @@ func _input(event):
 		# Check if the left mouse button is pressed for the first time and if it's inside the box
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if box_rect.has_point(get_global_mouse_position()):
+				GlobalVars.player_health = 100
 				get_tree().change_scene_to_file("res://scenes/game.tscn")
 				
