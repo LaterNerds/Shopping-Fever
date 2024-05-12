@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1pq02sdari3p"]
+
+[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="1_oys5r"]
+[ext_resource type="Shader" path="res://shaders/monitor.gdshader" id="2_4gm7d"]
+[ext_resource type="Script" path="res://scripts/endscore.gd" id="3_cj4cs"]
+[ext_resource type="Script" path="res://scripts/start.gd" id="3_fwbh4"]
+[ext_resource type="Script" path="res://scripts/home.gd" id="4_jhav5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6nlnm"]
+shader = ExtResource("1_oys5r")
+shader_parameter/vhs_resolution = Vector2(1152, 648)
+shader_parameter/samples = 12
+shader_parameter/crease_noise = 2.0
+shader_parameter/crease_opacity = 1.0
+shader_parameter/filter_intensity = 1.0
+shader_parameter/tape_crease_smear = 2.0
+shader_parameter/tape_crease_intensity = 1.0
+shader_parameter/tape_crease_jitter = 1.0
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 2.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bldu"]
+shader = ExtResource("2_4gm7d")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(640, 420)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.145
+shader_parameter/roll_size = 9.382
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 0.63
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.115
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="death" type="Node2D"]
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_6nlnm")
+offset_left = -1.0
+offset_right = 1150.0
+offset_bottom = 648.0
+
+[node name="ColorRect2" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_8bldu")
+offset_right = 1151.0
+offset_bottom = 647.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -2.0
+offset_top = 176.0
+offset_right = 1151.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 26
+text = "Score: "
+horizontal_alignment = 1
+script = ExtResource("3_cj4cs")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1.0
+offset_top = 58.0
+offset_right = 1152.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 65
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="start_button" type="Button" parent="."]
+offset_left = 459.0
+offset_top = 291.0
+offset_right = 709.0
+offset_bottom = 404.0
+theme_override_font_sizes/font_size = 38
+text = "Try Again"
+
+[node name="start" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 458.0
+offset_top = 292.0
+offset_right = 710.0
+offset_bottom = 405.0
+script = ExtResource("3_fwbh4")
+
+[node name="tutorial_button" type="Button" parent="."]
+offset_left = 469.0
+offset_top = 468.0
+offset_right = 719.0
+offset_bottom = 581.0
+theme_override_font_sizes/font_size = 38
+text = "Title"
+
+[node name="tutorial" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 462.0
+offset_top = 469.0
+offset_right = 714.0
+offset_bottom = 582.0
+script = ExtResource("4_jhav5")
+
+[connection signal="button_down" from="tutorial_button" to="tutorial_button" method="_on_button_down"]

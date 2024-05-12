@@ -76,6 +76,7 @@ func _process(delta):
 		if (GlobalVars.player_health <= 0):
 			print("died")
 			queue_free()
+			get_tree().change_scene_to_file("res://scenes/death.tscn")
 	
 	get_node("../gui/health").text = "Health: " + str(GlobalVars.player_health)
 	#keypressses
@@ -86,6 +87,7 @@ func _process(delta):
 			var instance = LYSOL.instantiate()
 			add_child(instance)
 			is_lysol_active = true
+			$"../AudioStreamPlayer2D".play()
 
 	if GlobalVars.player_health >= 101:
 		GlobalVars.player_health = 100

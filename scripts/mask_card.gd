@@ -6,3 +6,4 @@ func _on_area_entered(area):
 		GlobalVars.mask_protection += 5
 		queue_free()
 		$"../../mask_spawn".spawn_child()
+		$"../../AudioStreamPlayer2D2".play()

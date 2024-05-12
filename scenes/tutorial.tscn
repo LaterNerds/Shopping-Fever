@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=3 uid="uid://cetlvqkjmk5l"]
+
+[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="1_eofat"]
+[ext_resource type="Shader" path="res://shaders/monitor.gdshader" id="2_ehnb8"]
+[ext_resource type="Script" path="res://scripts/home.gd" id="3_eq1pb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vcw7u"]
+shader = ExtResource("1_eofat")
+shader_parameter/vhs_resolution = Vector2(1152, 648)
+shader_parameter/samples = 12
+shader_parameter/crease_noise = 2.0
+shader_parameter/crease_opacity = 1.0
+shader_parameter/filter_intensity = 1.0
+shader_parameter/tape_crease_smear = 2.0
+shader_parameter/tape_crease_intensity = 1.0
+shader_parameter/tape_crease_jitter = 1.0
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 2.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j6gpj"]
+shader = ExtResource("2_ehnb8")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(640, 420)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 5.145
+shader_parameter/roll_size = 9.382
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 0.63
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.115
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="tutorial" type="Node2D"]
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_vcw7u")
+offset_left = -1.0
+offset_right = 1150.0
+offset_bottom = 648.0
+
+[node name="ColorRect2" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_j6gpj")
+offset_right = 1151.0
+offset_bottom = 647.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -2.0
+offset_top = 176.0
+offset_right = 1151.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 26
+text = "The goal of the game is to 
+get the highest score possible by surviving longer and picking up toilet paper
+
+Avoid enemies or else you'll catch covid
+
+Collect cards for various effects
+
+WASD to move
+E for lysol"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = -1.0
+offset_top = 58.0
+offset_right = 1152.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 65
+text = "Shopping Fever"
+horizontal_alignment = 1
+
+[node name="back_button" type="Button" parent="."]
+offset_left = 19.0
+offset_top = 12.0
+offset_right = 269.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 38
+text = "Back"
+
+[node name="back" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 270.0
+offset_bottom = 125.0
+script = ExtResource("3_eq1pb")
