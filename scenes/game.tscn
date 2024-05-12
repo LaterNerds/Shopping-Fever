@@ -575,7 +575,7 @@ shader_parameter/noise_intensity = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkml5"]
 shader = ExtResource("7_g1yoa")
-shader_parameter/overlay = false
+shader_parameter/overlay = true
 shader_parameter/scanlines_opacity = 0.0
 shader_parameter/scanlines_width = 0.25
 shader_parameter/grille_opacity = 0.0
@@ -775,6 +775,6 @@ volume_db = -20.122
 
 [node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_5s8sq")
-volume_db = -4.71
+volume_db = 24.0
 
 [connection signal="timeout" from="gui/score/Timer" to="gui/score" method="_on_timer_timeout"]
