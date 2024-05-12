@@ -647,29 +647,30 @@ script = ExtResource("3_u5hn7")
 wait_time = 0.05
 
 [node name="health" type="Label" parent="gui"]
-offset_left = 397.0
-offset_right = 560.0
-offset_bottom = 42.0
+offset_left = 274.0
+offset_top = 552.0
+offset_right = 437.0
+offset_bottom = 594.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Health: 100"
 
 [node name="has_lysol_label" type="Label" parent="gui"]
-offset_left = 951.0
-offset_top = 520.0
-offset_right = 1144.0
-offset_bottom = 575.0
+offset_left = 478.0
+offset_top = 553.0
+offset_right = 671.0
+offset_bottom = 608.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Lysol: Yes"
 
 [node name="mask" type="Label" parent="gui"]
-offset_left = 885.0
-offset_top = 577.0
-offset_right = 1130.0
-offset_bottom = 632.0
+offset_left = 646.0
+offset_top = 555.0
+offset_right = 891.0
+offset_bottom = 610.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Protection: 0"
 
 [node name="player" parent="." instance=ExtResource("1_fmhl6")]
