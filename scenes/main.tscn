@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c7l44jw8sgxaj"]
+[gd_scene load_steps=25 format=3 uid="uid://c7l44jw8sgxaj"]
 
 [ext_resource type="PackedScene" uid="uid://d1q3cybc6221n" path="res://scenes/player.tscn" id="1_fmhl6"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="3_u5hn7"]
@@ -6,11 +6,12 @@
 [ext_resource type="Shader" path="res://shaders/gotCovid.gdshader" id="5_h5cyt"]
 [ext_resource type="Script" path="res://scripts/spawn_shopper.gd" id="6_mf0vi"]
 [ext_resource type="Texture2D" uid="uid://bwfib3ss6bxjm" path="res://kmnas.png" id="6_ur65v"]
-[ext_resource type="Shader" path="res://scenes/vhs.gdshader" id="6_wqkm6"]
-[ext_resource type="Shader" path="res://scenes/monitor.gdshader" id="7_g1yoa"]
+[ext_resource type="Shader" path="res://shaders/vhs.gdshader" id="6_wqkm6"]
+[ext_resource type="Shader" path="res://shaders/monitor.gdshader" id="7_g1yoa"]
 [ext_resource type="Script" path="res://scripts/toilet_paper_spawn.gd" id="7_ivanx"]
 [ext_resource type="Script" path="res://scripts/lysol_spawn.gd" id="8_ofort"]
 [ext_resource type="Script" path="res://scripts/mask_spawn.gd" id="9_qbujp"]
+[ext_resource type="Script" path="res://scripts/vaccine_spawn.gd" id="12_m2mar"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oay6h"]
 texture = ExtResource("4_m08uq")
@@ -550,12 +551,6 @@ size = Vector2(46, 2843)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mwjv"]
 size = Vector2(3268.5, 25)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b242c"]
-shader = ExtResource("5_h5cyt")
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.0
-shader_parameter/vignette_rgb = Vector4(0, 155, 0, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yjtr7"]
 shader = ExtResource("6_wqkm6")
 shader_parameter/vhs_resolution = Vector2(1152, 648)
@@ -595,6 +590,12 @@ shader_parameter/warp_amount = 0.115
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b242c"]
+shader = ExtResource("5_h5cyt")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.0
+shader_parameter/vignette_rgb = Vector4(0, 155, 0, 1)
 
 [node name="Game" type="Node2D"]
 
@@ -663,12 +664,15 @@ theme_override_font_sizes/font_size = 40
 text = "Lysol: Yes"
 
 [node name="mask" type="Label" parent="gui"]
-offset_left = 110.0
-offset_top = 559.0
-offset_right = 150.0
-offset_bottom = 582.0
+offset_left = 885.0
+offset_top = 577.0
+offset_right = 1130.0
+offset_bottom = 632.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Protection: 0"
 
-[node name="player" parent="." groups=["player"] instance=ExtResource("1_fmhl6")]
+[node name="player" parent="." instance=ExtResource("1_fmhl6")]
 z_index = 5
 texture_filter = 1
 position = Vector2(134, 419)
@@ -696,13 +700,6 @@ shape = SubResource("RectangleShape2D_7mwjv")
 
 [node name="Shader" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="Shader"]
-material = SubResource("ShaderMaterial_b242c")
-offset_top = 2.0
-offset_right = 1152.0
-offset_bottom = 649.0
-texture = ExtResource("6_ur65v")
-
 [node name="ColorRect" type="ColorRect" parent="Shader"]
 material = SubResource("ShaderMaterial_yjtr7")
 offset_left = -1.0
@@ -713,6 +710,13 @@ offset_bottom = 648.0
 material = SubResource("ShaderMaterial_tkml5")
 offset_right = 1151.0
 offset_bottom = 647.0
+
+[node name="TextureRect" type="TextureRect" parent="Shader"]
+material = SubResource("ShaderMaterial_b242c")
+offset_top = 2.0
+offset_right = 1152.0
+offset_bottom = 649.0
+texture = ExtResource("6_ur65v")
 
 [node name="shoppers_spawn" type="Node" parent="."]
 
@@ -740,5 +744,8 @@ script = ExtResource("7_ivanx")
 
 [node name="mask_spawn" type="Node" parent="."]
 script = ExtResource("9_qbujp")
+
+[node name="vaccine_spawn" type="Node" parent="."]
+script = ExtResource("12_m2mar")
 
 [connection signal="timeout" from="gui/score/Timer" to="gui/score" method="_on_timer_timeout"]

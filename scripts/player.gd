@@ -4,9 +4,6 @@ var is_lysol_active = false
 
 @onready var has_lysol_label = $"../gui/has_lysol_label"
 
-#player stuf
-var health = 100
-
 # Car properties
 var speed = 0
 var acceleration = 500
@@ -74,14 +71,13 @@ func _process(delta):
 		if GlobalVars.in_covid == true:
 			elapsed_time += delta
 		if elapsed_time >= 0.8:
-			health -= 10
+			GlobalVars.player_health -= 10
 			elapsed_time = 0
-			get_node("../gui/health").text = "Health: " + str(health)
-		if (health <= 0):
+		if (GlobalVars.player_health <= 0):
 			print("died")
 			queue_free()
 	
-	
+	get_node("../gui/health").text = "Health: " + str(GlobalVars.player_health)
 	#keypressses
 	if Input.is_action_just_pressed("use"):
 		print(GlobalVars.has_lysol)
@@ -91,8 +87,10 @@ func _process(delta):
 			add_child(instance)
 			is_lysol_active = true
 
+	if GlobalVars.player_health >= 101:
+		GlobalVars.player_health = 100
 	
-	texture_rect.material.set_shader_parameter("vignette_opacity", 5 - (health / 20))
+	texture_rect.material.set_shader_parameter("vignette_opacity", 5 - (GlobalVars.player_health / 20))
 
 # on player area entered
 func _on_area_2d_area_entered(area):
@@ -107,4 +105,4 @@ func _on_area_2d_area_exited(area):
 func _on_child_exiting_tree(node):
 	if node is Area2D:
 		is_lysol_active = false
-		set_meta("has_lysol", false)
+		GlobalVars.has_lysol = false

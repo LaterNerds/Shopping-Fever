@@ -2,5 +2,5 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		GlobalVars.has_lysol = true
+		GlobalVars.player_health += 25
 		queue_free()
