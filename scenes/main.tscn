@@ -646,7 +646,6 @@ position = Vector2(1025, -1413)
 shape = SubResource("RectangleShape2D_7mwjv")
 
 [node name="Shader" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="TextureRect" type="TextureRect" parent="Shader"]
 material = SubResource("ShaderMaterial_b242c")
