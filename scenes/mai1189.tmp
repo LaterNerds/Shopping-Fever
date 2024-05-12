@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://shaders/gotCovid.gdshader" id="5_h5cyt"]
 [ext_resource type="Script" path="res://scripts/spawn.gd" id="6_mf0vi"]
 [ext_resource type="Texture2D" uid="uid://bwfib3ss6bxjm" path="res://kmnas.png" id="6_ur65v"]
-[ext_resource type="Script" path="res://scripts/toilet_paper_spawn.gd" id="7_ivanx"]
+[ext_resource type="Script" path="res://scenes/toilet_paper_spawn.gd" id="7_ivanx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oay6h"]
 texture = ExtResource("4_m08uq")
@@ -555,7 +555,7 @@ shader_parameter/vignette_rgb = Vector4(0, 155, 0, 1)
 [node name="Game" type="Node2D"]
 
 [node name="ground" type="TileMap" parent="."]
-position = Vector2(6, 2)
+position = Vector2(5, 2)
 scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_ar3lu")
 format = 2
@@ -663,5 +663,8 @@ script = ExtResource("6_mf0vi")
 
 [node name="toilet_paper_spawn" type="Node" parent="."]
 script = ExtResource("7_ivanx")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-475, -1300)
 
 [connection signal="timeout" from="gui/score/Timer" to="gui/score" method="_on_timer_timeout"]

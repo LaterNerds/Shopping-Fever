@@ -15,3 +15,6 @@ func _process(delta):
 func _on_timer_timeout():
 	score += 1
 	timer.start()
+
+func _add_score(amount):
+	score += amount
