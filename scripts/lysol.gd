@@ -5,6 +5,7 @@ extends Area2D
 
 var grandma_dying = false
 var immune = false
+var grandma
 
 func _ready():
 	active.start()
@@ -14,6 +15,7 @@ func _on_body_entered(body):
 		body.get_node("../shoppers_spawn/" + body.name).create_new()
 		body.queue_free()
 	elif body.is_in_group("grandma"):
+		grandma = body
 		grandma_dying = true
 
 func _on_body_exited(body):
@@ -22,7 +24,7 @@ func _on_body_exited(body):
 
 func _process(delta):
 	if grandma_dying and not immune:
-		GlobalVars.grandma_health -= 25
+		grandma.health -= 25
 		immune = true
 		immune_timer.start()
 		

@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-const speed = 300
+const speed = 325
 const angle_threshold = 45  # Set an angle threshold for animation changes
+
+@export var health = 400
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
@@ -24,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		sprite.play('walk_down')
 	
-	if GlobalVars.grandma_health <= 0:
+	if health <= 0:
 		queue_free()
 
 func makepath() -> void:

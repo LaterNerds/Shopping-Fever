@@ -3,6 +3,8 @@ extends CharacterBody2D
 var is_lysol_active = false
 
 @onready var has_lysol_label = $"../gui/has_lysol_label"
+@onready var death = $"../DEATH"
+
 
 # Car properties
 var speed = 0

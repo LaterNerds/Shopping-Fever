@@ -3,14 +3,13 @@ extends Node
 var tilemap # Reference to your TileMap node
 var spawn_count = 0
 
-# Define a variable to track if the action has been triggered
-var actionTriggered = false
+var last_num = 0
 
 # Function to check and run the action if score surpasses a multiple of 10000
 func checkScore(score):
-	if score >= 7500 and not actionTriggered:
-		actionTriggered = true
+	if score >= last_num + 7500:
 		spawn_child()
+		last_num += 7500
 
 func _ready():
 	# Set up your tilemap reference
